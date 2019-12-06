@@ -1,0 +1,16 @@
+[
+{
+  "modid": "extraenchants",
+  "name": "Extra Enchantments",
+  "description": "Some extra enchantments, done right.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["_Bloop"],
+  "credits": "Cyclic for inspiration",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
