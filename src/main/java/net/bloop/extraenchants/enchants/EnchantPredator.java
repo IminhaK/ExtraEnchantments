@@ -35,6 +35,8 @@ public class EnchantPredator extends BaseEnchant {
         EntityLivingBase entity = (EntityLivingBase)e.getTarget();
         if(!EnchantmentConfigs.predatorPlayers && entity instanceof EntityPlayer)
             return;
+        if(!EnchantmentConfigs.predatorBosses && !entity.isNonBoss())
+            return;
         if((entity.getHealth() / entity.getMaxHealth()) <= EnchantmentConfigs.predatorEffectiveness) //check if youre hitting an entity at less than config % hp
             entity.attackEntityFrom(DamageSource.causePlayerDamage(e.getEntityPlayer()), Float.MAX_VALUE); //"Now thats allota damage!"
     }

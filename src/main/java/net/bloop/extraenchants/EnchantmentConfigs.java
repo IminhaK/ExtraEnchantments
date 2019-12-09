@@ -16,6 +16,9 @@ public class EnchantmentConfigs {
     @Config.Comment("Can predator kill players?")
     public static boolean predatorPlayers = false;
 
+    @Config.Comment("")
+    public static boolean predatorBosses = false;
+
     @Mod.EventBusSubscriber(modid = ExtraEnchantments.MODID)
     private static class EventHandler {
         @SubscribeEvent
