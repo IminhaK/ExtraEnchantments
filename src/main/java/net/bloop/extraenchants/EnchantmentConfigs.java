@@ -11,7 +11,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EnchantmentConfigs {
 
     @Config.Comment("At what % of HP will the predator enchantment kill an enemy?")
-    public static float predatorEffectiveness = 0.2f;
+    @Config.RangeInt(min = 0, max = 100)
+    public static double predatorEffectiveness = 20;
 
     @Config.Comment("Can predator kill players?")
     public static boolean predatorPlayers = false;
