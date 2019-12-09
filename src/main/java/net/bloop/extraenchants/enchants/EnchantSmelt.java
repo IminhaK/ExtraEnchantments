@@ -1,9 +1,9 @@
 package net.bloop.extraenchants.enchants;
 
+import net.bloop.extraenchants.EnchantmentRegistry;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.item.EntityExpBottle;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
@@ -14,8 +14,6 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +24,7 @@ import java.util.Random;
 public class EnchantSmelt extends BaseEnchant {
 
     public EnchantSmelt() {
-        super("Smelting", Rarity.COMMON, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-
+        super("Smelting", Rarity.RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -41,10 +38,12 @@ public class EnchantSmelt extends BaseEnchant {
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void onHarvestDrops(BlockEvent.HarvestDropsEvent e) { //add spawning of xp
+    public static void onHarvestDrops(BlockEvent.HarvestDropsEvent e) {
         if (e.getHarvester() == null)
             return;
         if (e.isSilkTouching())
+            return;
+        if(!EnchantmentHelper.getEnchantments(e.getHarvester().getHeldItemMainhand()).containsKey(EnchantmentRegistry.enchantSmelt))
             return;
         List<ItemStack> drops = e.getDrops(); //items that are dropped on the floor
         List<ItemStack> dropsCopy = new ArrayList<>();
