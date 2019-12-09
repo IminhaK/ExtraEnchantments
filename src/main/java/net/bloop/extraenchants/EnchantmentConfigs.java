@@ -17,11 +17,11 @@ public class EnchantmentConfigs {
     @Config.Comment("Can predator kill players?")
     public static boolean predatorPlayers = false;
 
-    @Config.Comment("")
+    @Config.Comment("Can predator kill bosses?")
     public static boolean predatorBosses = false;
 
     @Mod.EventBusSubscriber(modid = ExtraEnchantments.MODID)
-    private static class EventHandler {
+    private static class ConfigEventHandler {
         @SubscribeEvent
         public static void onConfigChanged(final ConfigChangedEvent.OnConfigChangedEvent event) {
             if (event.getModID().equals(ExtraEnchantments.MODID)) {
